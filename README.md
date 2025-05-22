@@ -73,7 +73,7 @@ For example, you can send:
 
 ## Langchain Prompt Structure
 The bot uses [Langchain](https://js.langchain.com) with [OpenAI](https://openai.com) models to generate AI responses.
-Prompt templates are defined in the [\src\backend\services\langchain.ts](C:\Users\Rann\Desktop\tokenguard\src\backend\services\langchain.ts)
+Prompt templates are defined in the [\src\backend\services\langchain.ts](\src\backend\services\langchain.ts)
 
 - **Intent Prompt**  
   This prompt is used to determine the user's intent based on the input text. It helps in understanding what kind of information the user is looking for.
