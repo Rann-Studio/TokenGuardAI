@@ -1,0 +1,35 @@
+{
+    "name": "tokenguard",
+    "version": "1.0.0",
+    "author": "rann-studio",
+    "description": "TokenGuardAI is a Telegram bot that helps you manage your crypto wallets and provides AI-powered insights.",
+    "license": "AGPL-3.0-or-later",
+    "keywords": [],
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "tsc",
+        "start": "node dist/index.js",
+        "dev": "ts-node --transpile-only src/index.ts"
+    },
+    "devDependencies": {
+        "@types/node": "^22.15.19",
+        "prisma": "^6.8.2",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.8.3"
+    },
+    "dependencies": {
+        "@aquarela/time-to-cron": "^2.1.2",
+        "@langchain/core": "^0.3.56",
+        "@langchain/openai": "^0.5.10",
+        "@prisma/client": "^6.8.2",
+        "dotenv": "^16.5.0",
+        "fastify": "^5.3.3",
+        "grammy": "^1.36.1",
+        "langchain": "^0.3.26",
+        "node-cron": "^4.0.5",
+        "picocolors": "^1.1.1",
+        "undici": "^7.10.0",
+        "uuid": "^11.1.0",
+        "zod": "^3.25.7"
+    }
+}

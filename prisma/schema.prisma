@@ -1,0 +1,78 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+    provider = "prisma-client-js"
+    output   = "../generated/prisma"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model CoinList {
+    id           String         @unique
+    name         String
+    symbol       String
+    createdAt    DateTime       @default(now())
+    updatedAt    DateTime       @updatedAt
+    coinPlatform CoinPlatform[]
+
+    @@index([name, symbol])
+}
+
+model CoinPlatform {
+    coinId    String
+    name      String
+    address   String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    coinList  CoinList @relation(fields: [coinId], references: [id])
+
+    @@unique([coinId, name, address])
+    @@index([name, address])
+}
+
+model CoinMarketInfo {
+    coinId         String           @unique
+    fdv            BigInt?
+    price          Json
+    marketCap      Json
+    supply         Json
+    allTimeHigh    Json
+    allTimeLow     Json
+    createdAt      DateTime         @default(now())
+    updatedAt      DateTime         @updatedAt
+    mesageResponse MesageResponse[]
+}
+
+model ChatIntent {
+    hash      String   @unique
+    response  Json
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model MesageResponse {
+    hash      String   @unique
+    marketId  String
+    risk      Json?
+    insight   Json?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    market CoinMarketInfo @relation(fields: [marketId], references: [coinId])
+
+    @@index([marketId])
+}
+
+model MessageResponseChat {
+    hash      String   @unique
+    text      String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
