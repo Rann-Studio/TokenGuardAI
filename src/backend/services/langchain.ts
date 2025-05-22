@@ -42,6 +42,7 @@ export const getChatIntent = async (query: string): Promise<TIntentResponse | nu
         how much is the price of btc? -> { "intent": "price", "symbol": "btc", "name": null, "address": null, "query": null }
         how much is the price of 0xcb50350ab555ed5d56265e096288536e8cac41eb? -> { "intent": "price", "symbol": null, "name": null, "address": "0xcb50350ab555ed5d56265e096288536e8cac41eb", "query": null }
         who is the creator of bitcoin? -> { "intent": "ask", "symbol": null, "name": null, "address": null, "query": "who is the creator of bitcoin?" }
+        or only give the address : 0xcb50350ab555ed5d56265e096288536e8cac41eb -> { "intent": "price", "symbol": null, "name": null, "address": "0xcb50350ab555ed5d56265e096288536e8cac41eb", "query": null }
     `;
 
     const parser = new JsonOutputParser<TIntentResponse>();
